@@ -11,6 +11,8 @@ Clawclamp adds Cedar-based authorization to OpenClaw tool calls. It evaluates ev
 
 This repository is a vibe-coding project and most of the implementation was generated with AI assistance.
 
+By default, Clawclamp starts in `gray` mode so a fresh installation does not block all tools immediately. Teams can observe policy effects first and then switch to `enforce`.
+
 ## Screenshots
 
 Add screenshots under `screenshots/` and reference them here when the repository is published on GitHub.
@@ -76,7 +78,7 @@ plugins:
           includeParams: true
 ```
 
-`policyStoreUri` points to a Cedar policy store JSON (file:// or https://). `policyStoreLocal` can be set to a raw JSON string for the policy store. If omitted, the plugin uses a built-in policy store that denies all tool calls unless a grant is active or an explicit permit policy exists.
+`policyStoreUri` points to a Cedar policy store JSON (file:// or https://). `policyStoreLocal` can be set to a raw JSON string for the policy store. If omitted, the plugin uses a built-in policy store that denies all tool calls unless a grant is active or an explicit permit policy exists. The default plugin mode is `gray`, not `enforce`.
 
 ## UI
 
