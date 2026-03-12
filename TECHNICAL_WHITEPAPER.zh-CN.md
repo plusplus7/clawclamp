@@ -83,6 +83,10 @@ flowchart LR
 
 从架构上看，Clawclamp 可以分成四层。最外层是 Hook 拦截层，负责嵌入 OpenClaw 的工具生命周期；往里一层是 Cedar 授权层，把一次工具调用转换成标准的 Cedar request；再往里是 Policy / Grant 管理层，负责把长期策略和短期授权统一存进 policy store；最上层则是审计与 UI 层，让策略和历史调用都能被人看见、理解和操作。
 
+为了让整体形态更直观，下面这张界面截图对应的是当前实现中的策略治理界面。它体现的不是单个功能点，而是 Clawclamp 想解决的问题：把策略定义、审计观察和人工干预尽量收敛在一个操作平面内。
+
+![Clawclamp 策略界面](./screenshots/policy-lab.png)
+
 ### 3.2 授权时机
 
 每次 OpenClaw 即将调用工具时，Clawclamp 都会收到一个 `before_tool_call` 事件。插件会把这次调用重写成一个标准授权请求：谁在调用、调用的是哪个动作、目标工具是什么、当前上下文包含什么信息。随后，这个请求会被送入 Cedarling 做同步决策。

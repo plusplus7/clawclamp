@@ -13,12 +13,27 @@ This repository is a vibe-coding project and most of the implementation was gene
 
 By default, Clawclamp starts in `gray` mode so a fresh installation does not block all tools immediately. Teams can observe policy effects first and then switch to `enforce`.
 
+## UI Preview
+
+Clawclamp ships with a compact web UI focused on three things: policy authoring, audit review, and runtime mode / temporary grant operations.
+
+- `Policy Lab`: create, edit, delete, and inspect Cedar policies from the browser
+- `Audit Log`: review allowed, denied, and gray-mode calls with request details
+- `Mode And Grants`: switch between `gray` and `enforce`, and issue short-term approvals
+
 ## Screenshots
 
-Add screenshots under `screenshots/` and reference them here when the repository is published on GitHub.
+### Policy Lab
 
-- Suggested files: `screenshots/policy-lab.png`, `screenshots/audit-log.png`
-- Suggested captures: the policy editor, the audit table, and the mode / grant controls
+![Policy Lab](./screenshots/policy-lab.png)
+
+### Audit Log
+
+![Audit Log](./screenshots/audit-log.png)
+
+### Mode And Grants
+
+![Mode And Grants](./screenshots/policy-mode.png)
 
 ## Features
 
