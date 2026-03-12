@@ -1,0 +1,9 @@
+node_modules/
+.DS_Store
+dist/
+coverage/
+*.log
+.pnpm-debug.log*
+*.tsbuildinfo
+assets/.DS_Store
+screenshots/

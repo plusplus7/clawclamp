@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>OpenClaw Clawclamp 审计控制台</title>
+    <link rel="stylesheet" href="/plugins/clawclamp/assets/styles.css" />
+  </head>
+  <body>
+    <div class="page">
+      <header class="header">
+        <div>
+          <p class="eyebrow">OpenClaw - Clawclamp</p>
+          <h1>工具授权与审计</h1>
+          <p class="subhead">
+            基于 Cedar 的策略决策，支持短期授权与灰度放行。
+          </p>
+        </div>
+        <div class="header-actions">
+          <button id="refresh" class="btn ghost">刷新</button>
+        </div>
+      </header>
+
+      <section class="card policy-shell">
+        <div class="policy-head">
+          <div>
+            <h2>Cedar 策略</h2>
+            <div class="note">查看与维护当前策略集（policyStoreUri 配置时为只读）。</div>
+          </div>
+          <div class="policy-badge">Policy Lab</div>
+        </div>
+        <div class="policy-grid">
+          <div class="policy-list-wrap">
+            <div class="label">策略列表</div>
+            <div class="policy-list" id="policy-list"></div>
+          </div>
+          <div class="policy-editor">
+            <div class="policy-form">
+              <label>
+                Policy ID
+                <input id="policy-id" placeholder="policy-id" />
+              </label>
+              <label>
+                Policy 内容
+                <textarea id="policy-content" rows="12" placeholder="permit(principal, action, resource) when { ... }"></textarea>
+              </label>
+              <div class="policy-actions">
+                <button id="policy-create" class="btn primary">新增</button>
+                <button id="policy-update" class="btn">保存</button>
+                <button id="policy-delete" class="btn warn">删除</button>
+              </div>
+              <div id="policy-status" class="note"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="grid">
+        <div class="card">
+          <h2>模式</h2>
+          <div class="mode-row">
+            <div>
+              <div class="label">当前模式</div>
+              <div id="mode" class="value">加载中...</div>
+              <div id="mode-note" class="note"></div>
+            </div>
+            <div class="mode-actions">
+              <button id="mode-enforce" class="btn">强制</button>
+              <button id="mode-gray" class="btn warn">灰度</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <h2>短期授权</h2>
+          <form id="grant-form" class="grant-form">
+            <label>
+              工具名称
+              <input id="grant-tool" placeholder="exec（或 *）" required />
+            </label>
+            <label>
+              TTL（秒）
+              <input id="grant-ttl" type="number" min="60" step="60" />
+            </label>
+            <label>
+              备注
+              <input id="grant-note" placeholder="原因 / 工单" />
+            </label>
+            <button class="btn primary" type="submit">创建授权</button>
+            <div id="grant-hint" class="note"></div>
+          </form>
+        </div>
+
+        <div class="card">
+          <h2>当前授权</h2>
+          <div id="grants" class="list"></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>审计日志</h2>
+        <div class="note">最近的工具调用记录（允许、拒绝、灰度放行）。</div>
+        <div class="toolbar">
+          <label class="toolbar-item">
+            每页
+            <select id="audit-page-size">
+              <option value="20">20</option>
+              <option value="50" selected>50</option>
+              <option value="100">100</option>
+              <option value="200">200</option>
+            </select>
+          </label>
+          <div class="toolbar-item pagination">
+            <button id="audit-prev" class="btn">上一页</button>
+            <span id="audit-page-info" class="note">第 1 页</span>
+            <button id="audit-next" class="btn">下一页</button>
+          </div>
+        </div>
+        <div class="table" id="audit"></div>
+      </section>
+    </div>
+
+    <script type="module" src="/plugins/clawclamp/assets/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,10 @@
+{
+  "id": "clawclamp",
+  "name": "Clawclamp",
+  "description": "Cedar-based authorization guard with tool audit logging and gray-mode override.",
+  "configSchema": {
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {}
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@plusplus7/clawclamp",
+  "version": "0.1.1",
+  "description": "OpenClaw Cedar authorization guard with audit UI",
+  "type": "module",
+  "dependencies": {
+    "@janssenproject/cedarling_wasm": "1.7.0"
+  },
+  "openclaw": {
+    "extensions": [
+      "./index.ts"
+    ]
+  },
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
+}
